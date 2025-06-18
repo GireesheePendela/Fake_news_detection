@@ -1,5 +1,10 @@
 project:
-  title: "fake_news_detection"
+  type: website
   output-dir: docs
 
-
+website:
+  title: "Fake News Detection"
+  navbar:
+    left:
+      - href: index.qmd
+        text: Home
