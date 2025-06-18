@@ -1,5 +1,5 @@
 project:
   title: "fake_news_detection"
-
+  output-dir: docs
 
 
