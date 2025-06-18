@@ -96,6 +96,7 @@ These visualizations help interpret both the overall model performance and indiv
 
 2. After vectorizing the cleaned news text using TF-IDF, we trained a **Multinomial Naive Bayes (MNB)** classifier to detect whether an article is fake or real.
 
+Multinomial Naive Bayes proved to be a fast and reliable baseline model for fake news detection.
 ### 🔍 Why Naive Bayes?
 - Designed for text classification tasks
 - Fast and efficient even on large datasets
@@ -118,8 +119,5 @@ These visualizations help interpret both the overall model performance and indiv
 - Confusion matrix heatmap
 - Bar chart comparing evaluation metrics
 - Word clouds for fake and real news articles
----
-
-Multinomial Naive Bayes proved to be a fast and reliable baseline model for fake news detection.
 
 ---
