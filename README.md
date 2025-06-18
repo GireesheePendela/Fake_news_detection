@@ -123,3 +123,30 @@ These visualizations help interpret both the overall model performance and indiv
 Multinomial Naive Bayes proved to be a fast and reliable baseline model for fake news detection.
 
 ---
+
+# Project Structure:
+Fake_news_detection/
+│
+├── data/
+│   ├── Fake.csv                  # Original fake news dataset
+│   ├── True.csv                  # Original real news dataset
+│   ├── combined_news.csv         # Combined and labeled raw data
+│   ├── cleaned_news.csv          # Final preprocessed dataset
+│
+├── notebooks/
+│   ├── 01_load_and_combine.ipynb       # Load fake & real data, combine and label
+│   ├── 02_preprocess_text.ipynb        # Clean text (lowercase, lemmatize, remove stopwords)
+│   ├── 03_vectorize_text.ipynb         # TF-IDF vectorization + train-test split
+│   ├── 04_logistic_regression.ipynb    # Train & evaluate Logistic Regression
+│   ├── 05_naive_bayes.ipynb            # Train & evaluate Multinomial Naive Bayes
+│
+├── outputs/
+│   ├── fake_wordcloud.png        # Word cloud image for fake news
+│   ├── real_wordcloud.png        # Word cloud image for real news
+│   ├── confusion_matrix.png      # Confusion matrix heatmap
+│   ├── model_metrics.png         # Bar plot for model metrics
+│   ├── saved_model
+│
+├── .gitignore                    # Ignore large CSV files and temporary files
+├── README.md                     # Project overview and steps summary
+├── requirements.txt              # List of required Python packages
