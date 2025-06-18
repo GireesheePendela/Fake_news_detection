@@ -67,7 +67,7 @@ This step prepares the feature matrix (`X`) and target labels (`y`) for training
 
 ## 🧠 Step 5: Train and Evaluate the Model
 
-We trained a **Logistic Regression** model to classify news articles as either **real (1)** or **fake (0)** based on their TF-IDF vectorized text features.
+1. We trained a **Logistic Regression** model to classify news articles as either **real (1)** or **fake (0)** based on their TF-IDF vectorized text features.
 
 ### 🔍 Steps:
 - Trained the model using `LogisticRegression` from scikit-learn
@@ -91,5 +91,35 @@ We trained a **Logistic Regression** model to classify news articles as either *
 - **Top keywords** for fake and real news identified from logistic regression model coefficients
 
 These visualizations help interpret both the overall model performance and individual feature importance in distinguishing fake and real news articles.
+
+---
+
+2. After vectorizing the cleaned news text using TF-IDF, we trained a **Multinomial Naive Bayes (MNB)** classifier to detect whether an article is fake or real.
+
+### 🔍 Why Naive Bayes?
+- Designed for text classification tasks
+- Fast and efficient even on large datasets
+- Performs well with TF-IDF or count-based feature vectors
+
+### 🧪 Steps Performed:
+- Trained `MultinomialNB` on the training set
+- Predicted labels for the test set
+- Evaluated the model using:
+  - ✅ Accuracy
+  - 🎯 Precision
+  - 🔁 Recall
+  - 🏆 F1 Score
+
+### 📈 Results:
+- Accuracy: ~96–98%
+- Strong performance on both fake and real news classification
+
+### 📊 Visualizations Included:
+- Confusion matrix heatmap
+- Bar chart comparing evaluation metrics
+- Word clouds for fake and real news articles
+---
+
+Multinomial Naive Bayes proved to be a fast and reliable baseline model for fake news detection.
 
 ---
