@@ -1,0 +1,60 @@
+---
+title: "Fake News Detection"
+format: html
+name: Gireeshee Pendela
+---
+
+## 📌 Project Overview
+
+This project detects whether a news article is **fake or real** using machine learning techniques such as **Logistic Regression** and **Multinomial Naive Bayes**.
+
+We used a publicly available dataset containing news articles labeled as `Fake` or `True`.
+
+---
+
+## ✅ Dataset
+
+- Fake news from `Fake.csv`
+- Real news from `True.csv`
+- Combined and cleaned → `cleaned_news.csv` (not pushed to GitHub)
+- Preprocessing: lowercasing, punctuation removal, lemmatization, stopword removal
+
+---
+
+## 🔠 Text Vectorization
+
+- Used **TF-IDF vectorizer** from scikit-learn
+- Converted `clean_text` column into numerical vectors
+- Trained models on `X_train`, tested on `X_test`
+
+---
+
+## 🧠 Models Trained
+
+### 🔹 Logistic Regression  
+### 🔸 Multinomial Naive Bayes  
+
+Both achieved ~98% accuracy, precision, recall, and F1-score.
+
+---
+
+## 📊 Evaluation Metrics
+
+### 🔽 Confusion Matrix
+### 🔽 Metric Bar Chart
+### 🔴 Fake News Word Cloud
+### 🟢 Real News Word Cloud
+
+---
+
+## 🧠 Key Takeaways
+
+- Logistic Regression and Naive Bayes performed similarly
+- Word clouds clearly show vocabulary differences
+- The model is now ready to be deployed or used on new articles
+
+---
+
+## 📁 GitHub Repository
+
+👉 [https://github.com/GireesheePendela/fake_news_detection]
