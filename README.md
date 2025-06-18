@@ -32,3 +32,21 @@ We use `pandas` to load both datasets and combine them into a single DataFrame.
 - Combine both datasets using `pd.concat()`
 - Shuffle the combined dataset for randomness
 
+---
+
+---
+
+## 🧹 Step 3: Preprocess the Text
+
+We clean and prepare the news article text to make it suitable for machine learning models.
+
+### 🔍 Steps:
+- Convert text to **lowercase**
+- Remove **punctuation and special characters**
+- Remove **stopwords** using NLTK
+- Apply **lemmatization** to reduce words to their base form
+- Eliminate any **extra whitespace**
+
+The cleaned output is stored in a new column called `clean_text`.
+
+---
