@@ -1,0 +1,3 @@
+# Ignore combined and cleaned datasets
+data/combined_news.csv
+data/cleaned_news.csv
