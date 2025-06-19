@@ -21,60 +21,46 @@
     "text": "import pandas as pd\n\n# Load the datasets\nfake_df = pd.read_csv(r\"C:\\Users\\hp\\Desktop\\projects\\fake_news_detection\\data\\Fake.csv\")\nreal_df = pd.read_csv(r\"C:\\Users\\hp\\Desktop\\projects\\fake_news_detection\\data\\True.csv\")\n\n# Add labels\nfake_df['label'] = 0  # 0 = Fake\nreal_df['label'] = 1  # 1 = Real\n\n# Combine the two datasets\ndf = pd.concat([fake_df, real_df])\n\n# Shuffle the rows\ndf = df.sample(frac=1).reset_index(drop=True)\n\n# Quick peek\nprint(df.head())\nprint(df['label'].value_counts())\n\n                                               title  \\\n0  Justices hostile to Virginia Republicans in bl...   \n1  Trump to detour from campaign to visit Scotlan...   \n2   Two Days Ago, Trump Asked Russia To Hack Clin...   \n3  SHOCKING: Why Our Fed Government Will Grant “D...   \n4   Hillary’s Message To Former Miss Universe Cal...   \n\n                                                text       subject  \\\n0  WASHINGTON (Reuters) - Supreme Court justices ...  politicsNews   \n1  WASHINGTON (Reuters) - Facing slumping poll nu...  politicsNews   \n2  It s time the American people wake up to the d...          News   \n3  If we didn t know better, we d almost believe ...     left-news   \n4  Miss Universe 1996 Alicia Machado is now an Am...          News   \n\n              date  label  \n0  March 21, 2016       1  \n1   June 22, 2016       1  \n2    July 29, 2016      0  \n3      Apr 7, 2015      0  \n4     May 20, 2016      0  \nlabel\n0    23481\n1    21417\nName: count, dtype: int64\n\n\n\n# Save combined data to a new CSV file for later use\ndf.to_csv(r\"C:\\Users\\hp\\Desktop\\Projects\\Fake_news_detection\\data\\combined_news.csv\", index=False)"
   },
   {
+    "objectID": "data.html",
+    "href": "data.html",
+    "title": "Dataset",
+    "section": "",
+    "text": "The dataset used in this project comes from Kaggle: Fake and Real News Dataset, and consists of two separate CSV files:\n\nFake.csv — Contains news articles that are labeled as fake\nTrue.csv — Contains news articles that are labeled as real\n\nEach file includes the following columns: - title: The headline of the news article - text: The body/content of the article - subject: Topic category (e.g., politics, world news) - date: Publication date"
+  },
+  {
+    "objectID": "data.html#combining-the-dataset",
+    "href": "data.html#combining-the-dataset",
+    "title": "Dataset",
+    "section": "🔗 Combining the Dataset",
+    "text": "🔗 Combining the Dataset\nTo train a supervised machine learning model, we need a single labeled dataset. So we:\n\nAssigned a new column called label:\n\n0 for fake articles\n1 for real articles\n\nUsed pandas.concat() to combine both datasets into one DataFrame\nShuffled the rows to randomize the ordering\nSaved the result as combined_news.csv\n\nThis ensures a balanced and properly labeled dataset for training and testing."
+  },
+  {
+    "objectID": "data.html#text-cleaning-and-preprocessing",
+    "href": "data.html#text-cleaning-and-preprocessing",
+    "title": "Dataset",
+    "section": "🧹 Text Cleaning and Preprocessing",
+    "text": "🧹 Text Cleaning and Preprocessing\nTo make the raw news content usable for modeling, we applied several text preprocessing steps on the text column:\n\nLowercasing all words\nRemoving punctuation and special characters\nTokenizing into words\nRemoving stopwords (e.g., “the”, “and”, “is”)\nLemmatizing words (e.g., “running” → “run”)\n\nThe cleaned text was stored in a new column called clean_text, and the final preprocessed dataset was saved as cleaned_news.csv.\n\nThese steps help reduce noise and ensure that the model learns from meaningful textual features."
+  },
+  {
     "objectID": "index.html",
     "href": "index.html",
     "title": "Fake News Detection",
     "section": "",
-    "text": "This project detects whether a news article is fake or real using machine learning techniques such as Logistic Regression and Multinomial Naive Bayes.\nWe used a publicly available dataset containing news articles labeled as Fake or True."
+    "text": "This project aims to detect whether a given news article is real or fake using Natural Language Processing (NLP) and supervised machine learning models.\nWe use a labeled dataset of real and fake news articles to: - Preprocess and clean the text - Convert it into numerical features using TF-IDF Vectorization - Train models such as Logistic Regression and Multinomial Naive Bayes - Evaluate performance using standard classification metrics - Visualize insights like confusion matrices, word clouds, and top predictive words\n\n\nFake news can spread rapidly and influence public opinion. This project focuses on building a model that can automatically distinguish between fake and real news articles based on textual content.\n\n\n\n\nThe dataset consists of: - Fake.csv: News articles labeled as fake - True.csv: News articles labeled as real\nThe two datasets are combined and labeled (0 = fake, 1 = real), then cleaned and preprocessed for modeling.\n\n\n\n\n\nPython (Pandas, NumPy, Scikit-learn)\nNatural Language Toolkit (NLTK)\nMatplotlib, Seaborn\nWordCloud\nQuarto (for documentation and static site)"
   },
   {
     "objectID": "index.html#project-overview",
     "href": "index.html#project-overview",
     "title": "Fake News Detection",
     "section": "",
-    "text": "This project detects whether a news article is fake or real using machine learning techniques such as Logistic Regression and Multinomial Naive Bayes.\nWe used a publicly available dataset containing news articles labeled as Fake or True."
-  },
-  {
-    "objectID": "index.html#dataset",
-    "href": "index.html#dataset",
-    "title": "Fake News Detection",
-    "section": "✅ Dataset",
-    "text": "✅ Dataset\n\nFake news from Fake.csv\nReal news from True.csv\nCombined and cleaned → cleaned_news.csv (not pushed to GitHub)\nPreprocessing: lowercasing, punctuation removal, lemmatization, stopword removal"
-  },
-  {
-    "objectID": "index.html#text-vectorization",
-    "href": "index.html#text-vectorization",
-    "title": "Fake News Detection",
-    "section": "🔠 Text Vectorization",
-    "text": "🔠 Text Vectorization\n\nUsed TF-IDF vectorizer from scikit-learn\nConverted clean_text column into numerical vectors\nTrained models on X_train, tested on X_test"
-  },
-  {
-    "objectID": "index.html#models-trained",
-    "href": "index.html#models-trained",
-    "title": "Fake News Detection",
-    "section": "🧠 Models Trained",
-    "text": "🧠 Models Trained\n\n🔹 Logistic Regression\n\n\n🔸 Multinomial Naive Bayes\nBoth achieved ~98% accuracy, precision, recall, and F1-score."
-  },
-  {
-    "objectID": "index.html#evaluation-metrics",
-    "href": "index.html#evaluation-metrics",
-    "title": "Fake News Detection",
-    "section": "📊 Evaluation Metrics",
-    "text": "📊 Evaluation Metrics\n\n🔽 Confusion Matrix\n\n\n🔽 Metric Bar Chart\n\n\n🔴 Fake News Word Cloud\n\n\n🟢 Real News Word Cloud"
-  },
-  {
-    "objectID": "index.html#key-takeaways",
-    "href": "index.html#key-takeaways",
-    "title": "Fake News Detection",
-    "section": "🧠 Key Takeaways",
-    "text": "🧠 Key Takeaways\n\nLogistic Regression and Naive Bayes performed similarly\nWord clouds clearly show vocabulary differences\nThe model is now ready to be deployed or used on new articles"
+    "text": "This project aims to detect whether a given news article is real or fake using Natural Language Processing (NLP) and supervised machine learning models.\nWe use a labeled dataset of real and fake news articles to: - Preprocess and clean the text - Convert it into numerical features using TF-IDF Vectorization - Train models such as Logistic Regression and Multinomial Naive Bayes - Evaluate performance using standard classification metrics - Visualize insights like confusion matrices, word clouds, and top predictive words\n\n\nFake news can spread rapidly and influence public opinion. This project focuses on building a model that can automatically distinguish between fake and real news articles based on textual content.\n\n\n\n\nThe dataset consists of: - Fake.csv: News articles labeled as fake - True.csv: News articles labeled as real\nThe two datasets are combined and labeled (0 = fake, 1 = real), then cleaned and preprocessed for modeling.\n\n\n\n\n\nPython (Pandas, NumPy, Scikit-learn)\nNatural Language Toolkit (NLTK)\nMatplotlib, Seaborn\nWordCloud\nQuarto (for documentation and static site)"
   },
   {
     "objectID": "index.html#github-repository",
     "href": "index.html#github-repository",
     "title": "Fake News Detection",
     "section": "📁 GitHub Repository",
-    "text": "📁 GitHub Repository\n👉 [https://github.com/GireesheePendela/fake_news_detection]"
+    "text": "📁 GitHub Repository\n👉 View GitHub Repository"
   },
   {
     "objectID": "notebooks/preprocess_text.html",

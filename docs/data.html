@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>Preprocessing the data – Fake News Detection</title>
+<title>Dataset – Fake News Detection</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -20,59 +20,25 @@ ul.task-list li input[type="checkbox"] {
   margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
   vertical-align: middle;
 }
-/* CSS for syntax highlighting */
-pre > code.sourceCode { white-space: pre; position: relative; }
-pre > code.sourceCode > span { line-height: 1.25; }
-pre > code.sourceCode > span:empty { height: 1.2em; }
-.sourceCode { overflow: visible; }
-code.sourceCode > span { color: inherit; text-decoration: inherit; }
-div.sourceCode { margin: 1em 0; }
-pre.sourceCode { margin: 0; }
-@media screen {
-div.sourceCode { overflow: auto; }
-}
-@media print {
-pre > code.sourceCode { white-space: pre-wrap; }
-pre > code.sourceCode > span { display: inline-block; text-indent: -5em; padding-left: 5em; }
-}
-pre.numberSource code
-  { counter-reset: source-line 0; }
-pre.numberSource code > span
-  { position: relative; left: -4em; counter-increment: source-line; }
-pre.numberSource code > span > a:first-child::before
-  { content: counter(source-line);
-    position: relative; left: -1em; text-align: right; vertical-align: baseline;
-    border: none; display: inline-block;
-    -webkit-touch-callout: none; -webkit-user-select: none;
-    -khtml-user-select: none; -moz-user-select: none;
-    -ms-user-select: none; user-select: none;
-    padding: 0 4px; width: 4em;
-  }
-pre.numberSource { margin-left: 3em;  padding-left: 4px; }
-div.sourceCode
-  {   }
-@media screen {
-pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
-}
 </style>
 
 
-<script src="../site_libs/quarto-nav/quarto-nav.js"></script>
-<script src="../site_libs/quarto-nav/headroom.min.js"></script>
-<script src="../site_libs/clipboard/clipboard.min.js"></script>
-<script src="../site_libs/quarto-search/autocomplete.umd.js"></script>
-<script src="../site_libs/quarto-search/fuse.min.js"></script>
-<script src="../site_libs/quarto-search/quarto-search.js"></script>
-<meta name="quarto:offset" content="../">
-<script src="../site_libs/quarto-html/quarto.js"></script>
-<script src="../site_libs/quarto-html/popper.min.js"></script>
-<script src="../site_libs/quarto-html/tippy.umd.min.js"></script>
-<script src="../site_libs/quarto-html/anchor.min.js"></script>
-<link href="../site_libs/quarto-html/tippy.css" rel="stylesheet">
-<link href="../site_libs/quarto-html/quarto-syntax-highlighting-2f5df379a58b258e96c21c0638c20c03.css" rel="stylesheet" id="quarto-text-highlighting-styles">
-<script src="../site_libs/bootstrap/bootstrap.min.js"></script>
-<link href="../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="../site_libs/bootstrap/bootstrap-d4be639c637f3db3c684c66cefad7e0c.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<script src="site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="site_libs/quarto-nav/headroom.min.js"></script>
+<script src="site_libs/clipboard/clipboard.min.js"></script>
+<script src="site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="site_libs/quarto-search/fuse.min.js"></script>
+<script src="site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="./">
+<script src="site_libs/quarto-html/quarto.js"></script>
+<script src="site_libs/quarto-html/popper.min.js"></script>
+<script src="site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="site_libs/quarto-html/anchor.min.js"></script>
+<link href="site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="site_libs/quarto-html/quarto-syntax-highlighting-2f5df379a58b258e96c21c0638c20c03.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="site_libs/bootstrap/bootstrap-d4be639c637f3db3c684c66cefad7e0c.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
 <script id="quarto-search-options" type="application/json">{
   "location": "navbar",
   "copy-button": false,
@@ -111,7 +77,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     <nav class="navbar navbar-expand-lg " data-bs-theme="dark">
       <div class="navbar-container container-fluid">
       <div class="navbar-brand-container mx-auto">
-    <a class="navbar-brand" href="../index.html">
+    <a class="navbar-brand" href="./index.html">
     <span class="navbar-title">Fake News Detection</span>
     </a>
   </div>
@@ -122,11 +88,11 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
           <div class="collapse navbar-collapse" id="navbarCollapse">
             <ul class="navbar-nav navbar-nav-scroll me-auto">
   <li class="nav-item">
-    <a class="nav-link" href="../index.html"> 
+    <a class="nav-link" href="./index.html"> 
 <span class="menu-text">Home</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="../data.html"> 
+    <a class="nav-link active" href="./data.html" aria-current="page"> 
 <span class="menu-text">Dataset</span></a>
   </li>  
 </ul>
@@ -146,7 +112,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title">Preprocessing the data</h1>
+<h1 class="title">Dataset</h1>
 </div>
 
 
@@ -163,73 +129,48 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </header>
 
 
-<div id="af8d2ad8" class="cell" data-execution_count="2">
-<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> pandas <span class="im">as</span> pd</span>
-<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> re</span>
-<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> nltk</span>
-<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> nltk.corpus <span class="im">import</span> stopwords</span>
-<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> nltk.stem <span class="im">import</span> WordNetLemmatizer</span>
-<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a><span class="co"># Load the combined dataset</span></span>
-<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a>df <span class="op">=</span> pd.read_csv(<span class="vs">r"C:\Users\hp\Desktop\Projects\Fake_news_detection\data\combined_news.csv"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</div>
-<div id="fabc263f" class="cell" data-execution_count="3">
-<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a><span class="co"># Download necessary NLTK resources (run once)</span></span>
-<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a>nltk.download(<span class="st">'stopwords'</span>)</span>
-<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a>nltk.download(<span class="st">'punkt'</span>)</span>
-<span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a>nltk.download(<span class="st">'wordnet'</span>)</span>
-<span id="cb2-6"><a href="#cb2-6" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-7"><a href="#cb2-7" aria-hidden="true" tabindex="-1"></a><span class="co"># Initialize stopwords and lemmatizer</span></span>
-<span id="cb2-8"><a href="#cb2-8" aria-hidden="true" tabindex="-1"></a>stop_words <span class="op">=</span> <span class="bu">set</span>(stopwords.words(<span class="st">'english'</span>))</span>
-<span id="cb2-9"><a href="#cb2-9" aria-hidden="true" tabindex="-1"></a>lemmatizer <span class="op">=</span> WordNetLemmatizer()</span>
-<span id="cb2-10"><a href="#cb2-10" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-11"><a href="#cb2-11" aria-hidden="true" tabindex="-1"></a><span class="co"># Define text preprocessing function</span></span>
-<span id="cb2-12"><a href="#cb2-12" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> clean_text(text):</span>
-<span id="cb2-13"><a href="#cb2-13" aria-hidden="true" tabindex="-1"></a>    text <span class="op">=</span> <span class="bu">str</span>(text).lower()                              <span class="co"># Lowercase</span></span>
-<span id="cb2-14"><a href="#cb2-14" aria-hidden="true" tabindex="-1"></a>    text <span class="op">=</span> re.sub(<span class="vs">r'[^\w\s]'</span>, <span class="st">''</span>, text)                   <span class="co"># Remove punctuation</span></span>
-<span id="cb2-15"><a href="#cb2-15" aria-hidden="true" tabindex="-1"></a>    words <span class="op">=</span> nltk.word_tokenize(text)                      <span class="co"># Tokenize</span></span>
-<span id="cb2-16"><a href="#cb2-16" aria-hidden="true" tabindex="-1"></a>    words <span class="op">=</span> [w <span class="cf">for</span> w <span class="kw">in</span> words <span class="cf">if</span> w <span class="kw">not</span> <span class="kw">in</span> stop_words]     <span class="co"># Remove stopwords</span></span>
-<span id="cb2-17"><a href="#cb2-17" aria-hidden="true" tabindex="-1"></a>    words <span class="op">=</span> [lemmatizer.lemmatize(w) <span class="cf">for</span> w <span class="kw">in</span> words]      <span class="co"># Lemmatize</span></span>
-<span id="cb2-18"><a href="#cb2-18" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> <span class="st">' '</span>.join(words).strip()                        <span class="co"># Join and remove extra spaces</span></span>
-<span id="cb2-19"><a href="#cb2-19" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-20"><a href="#cb2-20" aria-hidden="true" tabindex="-1"></a><span class="co"># Apply preprocessing to the 'text' column</span></span>
-<span id="cb2-21"><a href="#cb2-21" aria-hidden="true" tabindex="-1"></a>df[<span class="st">'clean_text'</span>] <span class="op">=</span> df[<span class="st">'text'</span>].<span class="bu">apply</span>(clean_text)</span>
-<span id="cb2-22"><a href="#cb2-22" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-23"><a href="#cb2-23" aria-hidden="true" tabindex="-1"></a><span class="co"># Preview results</span></span>
-<span id="cb2-24"><a href="#cb2-24" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(df[[<span class="st">'text'</span>, <span class="st">'clean_text'</span>]].head())</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stderr">
-<pre><code>[nltk_data] Downloading package stopwords to
-[nltk_data]     C:\Users\hp\AppData\Roaming\nltk_data...
-[nltk_data]   Package stopwords is already up-to-date!
-[nltk_data] Downloading package punkt to
-[nltk_data]     C:\Users\hp\AppData\Roaming\nltk_data...
-[nltk_data]   Package punkt is already up-to-date!
-[nltk_data] Downloading package wordnet to
-[nltk_data]     C:\Users\hp\AppData\Roaming\nltk_data...
-[nltk_data]   Package wordnet is already up-to-date!</code></pre>
-</div>
-<div class="cell-output cell-output-stdout">
-<pre><code>                                                text  \
-0  WASHINGTON (Reuters) - Supreme Court justices ...   
-1  WASHINGTON (Reuters) - Facing slumping poll nu...   
-2  It s time the American people wake up to the d...   
-3  If we didn t know better, we d almost believe ...   
-4  Miss Universe 1996 Alicia Machado is now an Am...   
-
-                                          clean_text  
-0  washington reuters supreme court justice monda...  
-1  washington reuters facing slumping poll number...  
-2  time american people wake danger treasonous na...  
-3  know better almost believe federal government ...  
-4  miss universe 1996 alicia machado american cit...  </code></pre>
-</div>
-</div>
-<div id="20d34da1" class="cell" data-execution_count="5">
-<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Save the cleaned DataFrame to a new CSV</span></span>
-<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a>df.to_csv(<span class="vs">r"C:\Users\hp\Desktop\Projects\Fake_news_detection\data\cleaned_news.csv"</span>, index<span class="op">=</span><span class="va">False</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</div>
+<section id="dataset-description" class="level3">
+<h3 class="anchored" data-anchor-id="dataset-description">🗂️ Dataset Description</h3>
+<p>The dataset used in this project comes from <a href="https://www.kaggle.com/datasets/clmentbisaillon/fake-and-real-news-dataset">Kaggle: Fake and Real News Dataset</a>, and consists of two separate CSV files:</p>
+<ul>
+<li><strong><code>Fake.csv</code></strong> — Contains news articles that are labeled as <strong>fake</strong></li>
+<li><strong><code>True.csv</code></strong> — Contains news articles that are labeled as <strong>real</strong></li>
+</ul>
+<p>Each file includes the following columns: - <code>title</code>: The headline of the news article - <code>text</code>: The body/content of the article - <code>subject</code>: Topic category (e.g., politics, world news) - <code>date</code>: Publication date</p>
+<hr>
+</section>
+<section id="combining-the-dataset" class="level2">
+<h2 class="anchored" data-anchor-id="combining-the-dataset">🔗 Combining the Dataset</h2>
+<p>To train a supervised machine learning model, we need a single labeled dataset. So we:</p>
+<ol type="1">
+<li>Assigned a new column called <code>label</code>:
+<ul>
+<li><code>0</code> for <strong>fake</strong> articles</li>
+<li><code>1</code> for <strong>real</strong> articles</li>
+</ul></li>
+<li>Used <code>pandas.concat()</code> to combine both datasets into one DataFrame</li>
+<li>Shuffled the rows to randomize the ordering</li>
+<li>Saved the result as <code>combined_news.csv</code></li>
+</ol>
+<p>This ensures a balanced and properly labeled dataset for training and testing.</p>
+<hr>
+</section>
+<section id="text-cleaning-and-preprocessing" class="level2">
+<h2 class="anchored" data-anchor-id="text-cleaning-and-preprocessing">🧹 Text Cleaning and Preprocessing</h2>
+<p>To make the raw news content usable for modeling, we applied several text preprocessing steps on the <code>text</code> column:</p>
+<ul>
+<li><strong>Lowercasing</strong> all words</li>
+<li><strong>Removing punctuation</strong> and special characters</li>
+<li><strong>Tokenizing</strong> into words</li>
+<li><strong>Removing stopwords</strong> (e.g., “the”, “and”, “is”)</li>
+<li><strong>Lemmatizing</strong> words (e.g., “running” → “run”)</li>
+</ul>
+<p>The cleaned text was stored in a new column called <code>clean_text</code>, and the final preprocessed dataset was saved as <code>cleaned_news.csv</code>.</p>
+<hr>
+<p>These steps help reduce noise and ensure that the model learns from meaningful textual features.</p>
 
 
+</section>
 
 </main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">

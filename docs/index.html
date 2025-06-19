@@ -91,6 +91,10 @@ ul.task-list li input[type="checkbox"] {
     <a class="nav-link active" href="./index.html" aria-current="page"> 
 <span class="menu-text">Home</span></a>
   </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="./data.html"> 
+<span class="menu-text">Dataset</span></a>
+  </li>  
 </ul>
           </div> <!-- /navcollapse -->
             <div class="quarto-navbar-tools">
@@ -127,68 +131,33 @@ ul.task-list li input[type="checkbox"] {
 
 <section id="project-overview" class="level2">
 <h2 class="anchored" data-anchor-id="project-overview">📌 Project Overview</h2>
-<p>This project detects whether a news article is <strong>fake or real</strong> using machine learning techniques such as <strong>Logistic Regression</strong> and <strong>Multinomial Naive Bayes</strong>.</p>
-<p>We used a publicly available dataset containing news articles labeled as <code>Fake</code> or <code>True</code>.</p>
+<p>This project aims to detect whether a given news article is <strong>real</strong> or <strong>fake</strong> using Natural Language Processing (NLP) and supervised machine learning models.</p>
+<p>We use a labeled dataset of real and fake news articles to: - Preprocess and clean the text - Convert it into numerical features using <strong>TF-IDF Vectorization</strong> - Train models such as <strong>Logistic Regression</strong> and <strong>Multinomial Naive Bayes</strong> - Evaluate performance using standard classification metrics - Visualize insights like confusion matrices, word clouds, and top predictive words</p>
+<section id="problem-statement" class="level3">
+<h3 class="anchored" data-anchor-id="problem-statement">🔍 Problem Statement</h3>
+<p>Fake news can spread rapidly and influence public opinion. This project focuses on building a model that can automatically distinguish between fake and real news articles based on textual content.</p>
 <hr>
 </section>
-<section id="dataset" class="level2">
-<h2 class="anchored" data-anchor-id="dataset">✅ Dataset</h2>
+<section id="dataset" class="level3">
+<h3 class="anchored" data-anchor-id="dataset">📦 Dataset</h3>
+<p>The dataset consists of: - <code>Fake.csv</code>: News articles labeled as <strong>fake</strong> - <code>True.csv</code>: News articles labeled as <strong>real</strong></p>
+<p>The two datasets are combined and labeled (0 = fake, 1 = real), then cleaned and preprocessed for modeling.</p>
+<hr>
+</section>
+<section id="technologies-used" class="level3">
+<h3 class="anchored" data-anchor-id="technologies-used">🛠️ Technologies Used</h3>
 <ul>
-<li>Fake news from <code>Fake.csv</code></li>
-<li>Real news from <code>True.csv</code></li>
-<li>Combined and cleaned → <code>cleaned_news.csv</code> (not pushed to GitHub)</li>
-<li>Preprocessing: lowercasing, punctuation removal, lemmatization, stopword removal</li>
+<li>Python (Pandas, NumPy, Scikit-learn)</li>
+<li>Natural Language Toolkit (NLTK)</li>
+<li>Matplotlib, Seaborn</li>
+<li>WordCloud</li>
+<li>Quarto (for documentation and static site)</li>
 </ul>
-<hr>
 </section>
-<section id="text-vectorization" class="level2">
-<h2 class="anchored" data-anchor-id="text-vectorization">🔠 Text Vectorization</h2>
-<ul>
-<li>Used <strong>TF-IDF vectorizer</strong> from scikit-learn</li>
-<li>Converted <code>clean_text</code> column into numerical vectors</li>
-<li>Trained models on <code>X_train</code>, tested on <code>X_test</code></li>
-</ul>
-<hr>
-</section>
-<section id="models-trained" class="level2">
-<h2 class="anchored" data-anchor-id="models-trained">🧠 Models Trained</h2>
-<section id="logistic-regression" class="level3">
-<h3 class="anchored" data-anchor-id="logistic-regression">🔹 Logistic Regression</h3>
-</section>
-<section id="multinomial-naive-bayes" class="level3">
-<h3 class="anchored" data-anchor-id="multinomial-naive-bayes">🔸 Multinomial Naive Bayes</h3>
-<p>Both achieved ~98% accuracy, precision, recall, and F1-score.</p>
-<hr>
-</section>
-</section>
-<section id="evaluation-metrics" class="level2">
-<h2 class="anchored" data-anchor-id="evaluation-metrics">📊 Evaluation Metrics</h2>
-<section id="confusion-matrix" class="level3">
-<h3 class="anchored" data-anchor-id="confusion-matrix">🔽 Confusion Matrix</h3>
-</section>
-<section id="metric-bar-chart" class="level3">
-<h3 class="anchored" data-anchor-id="metric-bar-chart">🔽 Metric Bar Chart</h3>
-</section>
-<section id="fake-news-word-cloud" class="level3">
-<h3 class="anchored" data-anchor-id="fake-news-word-cloud">🔴 Fake News Word Cloud</h3>
-</section>
-<section id="real-news-word-cloud" class="level3">
-<h3 class="anchored" data-anchor-id="real-news-word-cloud">🟢 Real News Word Cloud</h3>
-<hr>
-</section>
-</section>
-<section id="key-takeaways" class="level2">
-<h2 class="anchored" data-anchor-id="key-takeaways">🧠 Key Takeaways</h2>
-<ul>
-<li>Logistic Regression and Naive Bayes performed similarly</li>
-<li>Word clouds clearly show vocabulary differences</li>
-<li>The model is now ready to be deployed or used on new articles</li>
-</ul>
-<hr>
 </section>
 <section id="github-repository" class="level2">
 <h2 class="anchored" data-anchor-id="github-repository">📁 GitHub Repository</h2>
-<p>👉 [https://github.com/GireesheePendela/fake_news_detection]</p>
+<p>👉 <a href="https://github.com/GireesheePendela/fake_news_detection">View GitHub Repository</a></p>
 
 
 </section>
