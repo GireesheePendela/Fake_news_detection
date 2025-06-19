@@ -1,0 +1,50 @@
+---
+title: "Dataset"
+format: html
+---
+
+### 🗂️ Dataset Description
+
+The dataset used in this project comes from [Kaggle: Fake and Real News Dataset](https://www.kaggle.com/datasets/clmentbisaillon/fake-and-real-news-dataset), and consists of two separate CSV files:
+
+- **`Fake.csv`** — Contains news articles that are labeled as **fake**
+- **`True.csv`** — Contains news articles that are labeled as **real**
+
+Each file includes the following columns:
+- `title`: The headline of the news article
+- `text`: The body/content of the article
+- `subject`: Topic category (e.g., politics, world news)
+- `date`: Publication date
+
+---
+
+## 🔗 Combining the Dataset
+
+To train a supervised machine learning model, we need a single labeled dataset. So we:
+
+1. Assigned a new column called `label`:
+   - `0` for **fake** articles
+   - `1` for **real** articles
+2. Used `pandas.concat()` to combine both datasets into one DataFrame
+3. Shuffled the rows to randomize the ordering
+4. Saved the result as `combined_news.csv`
+
+This ensures a balanced and properly labeled dataset for training and testing.
+
+---
+
+## 🧹 Text Cleaning and Preprocessing
+
+To make the raw news content usable for modeling, we applied several text preprocessing steps on the `text` column:
+
+- **Lowercasing** all words
+- **Removing punctuation** and special characters
+- **Tokenizing** into words
+- **Removing stopwords** (e.g., “the”, “and”, “is”)
+- **Lemmatizing** words (e.g., “running” → “run”)
+
+The cleaned text was stored in a new column called `clean_text`, and the final preprocessed dataset was saved as `cleaned_news.csv`.
+
+---
+
+These steps help reduce noise and ensure that the model learns from meaningful textual features.

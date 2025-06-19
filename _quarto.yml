@@ -8,3 +8,5 @@ website:
     left:
       - href: index.qmd
         text: Home
+      - href: data.qmd
+        text: Dataset

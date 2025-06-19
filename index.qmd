@@ -1,60 +1,47 @@
 ---
 title: "Fake News Detection"
 format: html
-name: Gireeshee Pendela
 ---
 
 ## 📌 Project Overview
 
-This project detects whether a news article is **fake or real** using machine learning techniques such as **Logistic Regression** and **Multinomial Naive Bayes**.
+## 📌 Project Overview
 
-We used a publicly available dataset containing news articles labeled as `Fake` or `True`.
+This project aims to detect whether a given news article is **real** or **fake** using Natural Language Processing (NLP) and supervised machine learning models.
 
----
+We use a labeled dataset of real and fake news articles to:
+- Preprocess and clean the text
+- Convert it into numerical features using **TF-IDF Vectorization**
+- Train models such as **Logistic Regression** and **Multinomial Naive Bayes**
+- Evaluate performance using standard classification metrics
+- Visualize insights like confusion matrices, word clouds, and top predictive words
 
-## ✅ Dataset
+### 🔍 Problem Statement
 
-- Fake news from `Fake.csv`
-- Real news from `True.csv`
-- Combined and cleaned → `cleaned_news.csv` (not pushed to GitHub)
-- Preprocessing: lowercasing, punctuation removal, lemmatization, stopword removal
-
----
-
-## 🔠 Text Vectorization
-
-- Used **TF-IDF vectorizer** from scikit-learn
-- Converted `clean_text` column into numerical vectors
-- Trained models on `X_train`, tested on `X_test`
+Fake news can spread rapidly and influence public opinion. This project focuses on building a model that can automatically distinguish between fake and real news articles based on textual content.
 
 ---
 
-## 🧠 Models Trained
+### 📦 Dataset
 
-### 🔹 Logistic Regression  
-### 🔸 Multinomial Naive Bayes  
+The dataset consists of:
+- `Fake.csv`: News articles labeled as **fake**
+- `True.csv`: News articles labeled as **real**
 
-Both achieved ~98% accuracy, precision, recall, and F1-score.
-
----
-
-## 📊 Evaluation Metrics
-
-### 🔽 Confusion Matrix
-### 🔽 Metric Bar Chart
-### 🔴 Fake News Word Cloud
-### 🟢 Real News Word Cloud
+The two datasets are combined and labeled (0 = fake, 1 = real), then cleaned and preprocessed for modeling.
 
 ---
 
-## 🧠 Key Takeaways
+### 🛠️ Technologies Used
 
-- Logistic Regression and Naive Bayes performed similarly
-- Word clouds clearly show vocabulary differences
-- The model is now ready to be deployed or used on new articles
+- Python (Pandas, NumPy, Scikit-learn)
+- Natural Language Toolkit (NLTK)
+- Matplotlib, Seaborn
+- WordCloud
+- Quarto (for documentation and static site)
 
----
 
 ## 📁 GitHub Repository
 
-👉 [https://github.com/GireesheePendela/fake_news_detection]
+👉 [View GitHub Repository](https://github.com/GireesheePendela/fake_news_detection)
+
