@@ -121,3 +121,6 @@ Multinomial Naive Bayes proved to be a fast and reliable baseline model for fake
 - Word clouds for fake and real news articles
 
 ---
+
+👤 **Author**: Gireeshee Pendela   
+🔗 GitHub: [github.com/GireesheePendela](https://github.com/GireesheePendela)

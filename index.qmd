@@ -2,6 +2,7 @@
 title: "Fake News Detection"
 format: html
 ---
+*Project by **Gireeshee Pendela***
 
 ## 📌 Project Overview
 

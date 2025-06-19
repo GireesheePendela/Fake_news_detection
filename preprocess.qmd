@@ -1,0 +1,37 @@
+---
+title: "Data Preprocessing"
+format: html
+---
+
+## 🧹 Text Cleaning & Preprocessing
+
+To prepare the news article content for machine learning, we performed a series of text preprocessing steps on the `text` column. This ensures that the model learns from clean, consistent, and meaningful text.
+
+### 🪛 Steps Applied:
+
+1. **Lowercasing**  
+   Converts all characters to lowercase to avoid treating "News" and "news" as different words.
+
+2. **Removing Punctuation & Special Characters**  
+   Strips out characters like `!`, `.`, `?`, and other non-alphabetic symbols to reduce noise.
+
+3. **Tokenization**  
+   Splits sentences into individual words (tokens) using `nltk.word_tokenize`.
+
+4. **Stopword Removal**  
+   Eliminates common, uninformative words such as "the", "is", "and", using NLTK's stopword list.
+
+5. **Lemmatization**  
+   Reduces words to their base form (e.g., “running” → “run”) using `WordNetLemmatizer` to normalize similar words.
+
+6. **Whitespace Cleanup**  
+   Joins cleaned tokens back into a single string with extra spaces removed.
+
+### 📄 Output
+
+- A new column called `clean_text` was created to store the processed text.
+- The final dataset (`cleaned_news.csv`) was used for model training and evaluation.
+
+---
+
+These preprocessing steps help remove noise, standardize input, and improve model performance by focusing on the most important words in each article.

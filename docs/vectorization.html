@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>Dataset – Fake News Detection</title>
+<title>Vectorization – Fake News Detection</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -92,7 +92,7 @@ ul.task-list li input[type="checkbox"] {
 <span class="menu-text">Home</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link active" href="./data.html" aria-current="page"> 
+    <a class="nav-link" href="./data.html"> 
 <span class="menu-text">Dataset</span></a>
   </li>  
   <li class="nav-item">
@@ -100,7 +100,7 @@ ul.task-list li input[type="checkbox"] {
 <span class="menu-text">Data Preprocessing</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="./vectorization.html"> 
+    <a class="nav-link active" href="./vectorization.html" aria-current="page"> 
 <span class="menu-text">Vectorization</span></a>
   </li>  
   <li class="nav-item">
@@ -124,7 +124,7 @@ ul.task-list li input[type="checkbox"] {
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title">Dataset</h1>
+<h1 class="title">Vectorization</h1>
 </div>
 
 
@@ -141,32 +141,44 @@ ul.task-list li input[type="checkbox"] {
 </header>
 
 
-<section id="dataset-description" class="level3">
-<h3 class="anchored" data-anchor-id="dataset-description">🗂️ Dataset Description</h3>
-<p>The dataset used in this project comes from <a href="https://www.kaggle.com/datasets/clmentbisaillon/fake-and-real-news-dataset">Kaggle: Fake and Real News Dataset</a>, and consists of two separate CSV files:</p>
-<ul>
-<li><strong><code>Fake.csv</code></strong> — Contains news articles that are labeled as <strong>fake</strong></li>
-<li><strong><code>True.csv</code></strong> — Contains news articles that are labeled as <strong>real</strong></li>
-</ul>
-<p>Each file includes the following columns: - <code>title</code>: The headline of the news article - <code>text</code>: The body/content of the article - <code>subject</code>: Topic category (e.g., politics, world news) - <code>date</code>: Publication date</p>
+<section id="text-vectorization" class="level2">
+<h2 class="anchored" data-anchor-id="text-vectorization">🔠 Text Vectorization</h2>
+<p>After cleaning and preprocessing the news articles, the next step was to convert the text data into a numerical format that machine learning models can understand.</p>
+<p>We used <strong>TF-IDF Vectorization</strong> (<code>Term Frequency–Inverse Document Frequency</code>) to represent each article as a vector of weighted word features.</p>
+<hr>
+<section id="why-tf-idf" class="level3">
+<h3 class="anchored" data-anchor-id="why-tf-idf">📊 Why TF-IDF?</h3>
+<p>TF-IDF helps: - Emphasize <strong>important words</strong> in a document that are less frequent across all documents - Reduce the impact of <strong>common words</strong> that appear in many articles - Create a <strong>sparse, high-dimensional feature space</strong> suitable for models like Logistic Regression and Naive Bayes</p>
 <hr>
 </section>
-<section id="combining-the-dataset" class="level2">
-<h2 class="anchored" data-anchor-id="combining-the-dataset">🔗 Combining the Dataset</h2>
-<p>To train a supervised machine learning model, we need a single labeled dataset. So we:</p>
+<section id="how-it-works" class="level3">
+<h3 class="anchored" data-anchor-id="how-it-works">🛠️ How It Works:</h3>
 <ol type="1">
-<li>Assigned a new column called <code>label</code>:
-<ul>
-<li><code>0</code> for <strong>fake</strong> articles</li>
-<li><code>1</code> for <strong>real</strong> articles</li>
-</ul></li>
-<li>Used <code>pandas.concat()</code> to combine both datasets into one DataFrame</li>
-<li>Shuffled the rows to randomize the ordering</li>
-<li>Saved the result as <code>combined_news.csv</code></li>
+<li><p><strong>TF (Term Frequency)</strong><br>
+Measures how often a word appears in a single document.</p></li>
+<li><p><strong>IDF (Inverse Document Frequency)</strong><br>
+Measures how rare a word is across all documents in the dataset.</p></li>
+<li><p><strong>TF × IDF = TF-IDF</strong><br>
+The final score reflects both importance and uniqueness of each word per document.</p></li>
 </ol>
-<p>This ensures a balanced and properly labeled dataset for training and testing.</p>
+<hr>
+</section>
+<section id="implementation" class="level3">
+<h3 class="anchored" data-anchor-id="implementation">⚙️ Implementation</h3>
+<ul>
+<li>We used <code>TfidfVectorizer</code> from <code>scikit-learn</code></li>
+<li>Parameters:
+<ul>
+<li><code>stop_words='english'</code> — ignores common English stopwords</li>
+<li><code>max_df=0.7</code> — ignores words that appear in more than 70% of documents</li>
+</ul></li>
+<li>The output is a <strong>sparse matrix</strong> used as input features <code>X</code> for model training.</li>
+</ul>
+<hr>
+<p>This vectorized data formed the foundation for training our machine learning models.</p>
 
 
+</section>
 </section>
 
 </main> <!-- /main -->

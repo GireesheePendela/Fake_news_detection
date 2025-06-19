@@ -1,0 +1,74 @@
+---
+title: "Classification Models & Visual Insights "
+format: html
+---
+
+##  Model Training & Visualizations
+
+We trained and evaluated two different models using TF-IDF vectorized news article data:
+
+-  Logistic Regression
+-  Multinomial Naive Bayes
+
+Each model was evaluated on performance metrics and supported with insightful visualizations.
+
+---
+
+### 🔹 1. Logistic Regression
+
+A linear classifier suitable for sparse high-dimensional data like TF-IDF.
+
+####  Metrics Calculated:
+- Accuracy
+- Precision
+- Recall
+- F1 Score
+
+#### 📊 Visualizations:
+- **Confusion Matrix** — Displays correct and incorrect predictions.
+
+![Logistic Confusion Matrix](images/confusion_matrix1.png)
+
+- **Correlation Matrix** — Shows correlation between article text length and label.
+
+![Logistic Correlation Matrix](images/corre_matrix1.png)
+
+- **Top Keywords** — Bar plots of the most predictive words for fake and real news.
+
+![Logistic Top Keywords used in Real News](images/real_news_words1.png)
+
+![Logistic Top Keywords used in Fake News](images/fake_news_words1.png)
+
+---
+
+###  2. Multinomial Naive Bayes
+
+A fast, probabilistic classifier designed for text data with discrete features.
+
+####  Metrics Calculated:
+- Accuracy
+- Precision
+- Recall
+- F1 Score
+
+#### 📊 Visualizations:
+- **Confusion Matrix** — Indicates classification performance.
+
+![Naive Bayes Confusion Matrix](images/confusion_matrix2.png)
+
+- **ROC Curve** — Visualizes the trade-off between true positive and false positive rates.
+
+![ROC Curve](images/roc2.png)
+
+- **Word Clouds**:
+  - 🔴 Fake News — Shows frequent terms in fake news articles
+
+  ![Fake News](images/wordcloud_fake2.png)
+
+  - 🟢 Real News — Highlights words common in real news articles
+
+  ![Real News](images/wordcloud_real2.png)
+
+---
+
+These visualizations help interpret not just **how well** the models performed, but also **why** — based on word patterns and prediction behavior.

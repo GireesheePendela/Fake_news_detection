@@ -31,20 +31,4 @@ To train a supervised machine learning model, we need a single labeled dataset. 
 
 This ensures a balanced and properly labeled dataset for training and testing.
 
----
 
-## 🧹 Text Cleaning and Preprocessing
-
-To make the raw news content usable for modeling, we applied several text preprocessing steps on the `text` column:
-
-- **Lowercasing** all words
-- **Removing punctuation** and special characters
-- **Tokenizing** into words
-- **Removing stopwords** (e.g., “the”, “and”, “is”)
-- **Lemmatizing** words (e.g., “running” → “run”)
-
-The cleaned text was stored in a new column called `clean_text`, and the final preprocessed dataset was saved as `cleaned_news.csv`.
-
----
-
-These steps help reduce noise and ensure that the model learns from meaningful textual features.

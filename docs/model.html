@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>Dataset – Fake News Detection</title>
+<title>Classification Models &amp; Visual Insights – Fake News Detection</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -92,7 +92,7 @@ ul.task-list li input[type="checkbox"] {
 <span class="menu-text">Home</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link active" href="./data.html" aria-current="page"> 
+    <a class="nav-link" href="./data.html"> 
 <span class="menu-text">Dataset</span></a>
   </li>  
   <li class="nav-item">
@@ -104,7 +104,7 @@ ul.task-list li input[type="checkbox"] {
 <span class="menu-text">Vectorization</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="./model.html"> 
+    <a class="nav-link active" href="./model.html" aria-current="page"> 
 <span class="menu-text">Model</span></a>
   </li>  
 </ul>
@@ -124,7 +124,7 @@ ul.task-list li input[type="checkbox"] {
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title">Dataset</h1>
+<h1 class="title">Classification Models &amp; Visual Insights</h1>
 </div>
 
 
@@ -141,32 +141,124 @@ ul.task-list li input[type="checkbox"] {
 </header>
 
 
-<section id="dataset-description" class="level3">
-<h3 class="anchored" data-anchor-id="dataset-description">🗂️ Dataset Description</h3>
-<p>The dataset used in this project comes from <a href="https://www.kaggle.com/datasets/clmentbisaillon/fake-and-real-news-dataset">Kaggle: Fake and Real News Dataset</a>, and consists of two separate CSV files:</p>
+<section id="model-training-visualizations" class="level2">
+<h2 class="anchored" data-anchor-id="model-training-visualizations">Model Training &amp; Visualizations</h2>
+<p>We trained and evaluated two different models using TF-IDF vectorized news article data:</p>
 <ul>
-<li><strong><code>Fake.csv</code></strong> — Contains news articles that are labeled as <strong>fake</strong></li>
-<li><strong><code>True.csv</code></strong> — Contains news articles that are labeled as <strong>real</strong></li>
+<li>Logistic Regression</li>
+<li>Multinomial Naive Bayes</li>
 </ul>
-<p>Each file includes the following columns: - <code>title</code>: The headline of the news article - <code>text</code>: The body/content of the article - <code>subject</code>: Topic category (e.g., politics, world news) - <code>date</code>: Publication date</p>
+<p>Each model was evaluated on performance metrics and supported with insightful visualizations.</p>
+<hr>
+<section id="logistic-regression" class="level3">
+<h3 class="anchored" data-anchor-id="logistic-regression">🔹 1. Logistic Regression</h3>
+<p>A linear classifier suitable for sparse high-dimensional data like TF-IDF.</p>
+<section id="metrics-calculated" class="level4">
+<h4 class="anchored" data-anchor-id="metrics-calculated">Metrics Calculated:</h4>
+<ul>
+<li>Accuracy</li>
+<li>Precision</li>
+<li>Recall</li>
+<li>F1 Score</li>
+</ul>
+</section>
+<section id="visualizations" class="level4">
+<h4 class="anchored" data-anchor-id="visualizations">📊 Visualizations:</h4>
+<ul>
+<li><strong>Confusion Matrix</strong> — Displays correct and incorrect predictions.</li>
+</ul>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="images/confusion_matrix1.png" class="img-fluid figure-img"></p>
+<figcaption>Logistic Confusion Matrix</figcaption>
+</figure>
+</div>
+<ul>
+<li><strong>Correlation Matrix</strong> — Shows correlation between article text length and label.</li>
+</ul>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="images/corre_matrix1.png" class="img-fluid figure-img"></p>
+<figcaption>Logistic Correlation Matrix</figcaption>
+</figure>
+</div>
+<ul>
+<li><strong>Top Keywords</strong> — Bar plots of the most predictive words for fake and real news.</li>
+</ul>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="images/real_news_words1.png" class="img-fluid figure-img"></p>
+<figcaption>Logistic Top Keywords used in Real News</figcaption>
+</figure>
+</div>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="images/fake_news_words1.png" class="img-fluid figure-img"></p>
+<figcaption>Logistic Top Keywords used in Fake News</figcaption>
+</figure>
+</div>
 <hr>
 </section>
-<section id="combining-the-dataset" class="level2">
-<h2 class="anchored" data-anchor-id="combining-the-dataset">🔗 Combining the Dataset</h2>
-<p>To train a supervised machine learning model, we need a single labeled dataset. So we:</p>
-<ol type="1">
-<li>Assigned a new column called <code>label</code>:
+</section>
+<section id="multinomial-naive-bayes" class="level3">
+<h3 class="anchored" data-anchor-id="multinomial-naive-bayes">2. Multinomial Naive Bayes</h3>
+<p>A fast, probabilistic classifier designed for text data with discrete features.</p>
+<section id="metrics-calculated-1" class="level4">
+<h4 class="anchored" data-anchor-id="metrics-calculated-1">Metrics Calculated:</h4>
 <ul>
-<li><code>0</code> for <strong>fake</strong> articles</li>
-<li><code>1</code> for <strong>real</strong> articles</li>
-</ul></li>
-<li>Used <code>pandas.concat()</code> to combine both datasets into one DataFrame</li>
-<li>Shuffled the rows to randomize the ordering</li>
-<li>Saved the result as <code>combined_news.csv</code></li>
-</ol>
-<p>This ensures a balanced and properly labeled dataset for training and testing.</p>
+<li>Accuracy</li>
+<li>Precision</li>
+<li>Recall</li>
+<li>F1 Score</li>
+</ul>
+</section>
+<section id="visualizations-1" class="level4">
+<h4 class="anchored" data-anchor-id="visualizations-1">📊 Visualizations:</h4>
+<ul>
+<li><strong>Confusion Matrix</strong> — Indicates classification performance.</li>
+</ul>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="images/confusion_matrix2.png" class="img-fluid figure-img"></p>
+<figcaption>Naive Bayes Confusion Matrix</figcaption>
+</figure>
+</div>
+<ul>
+<li><strong>ROC Curve</strong> — Visualizes the trade-off between true positive and false positive rates.</li>
+</ul>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="images/roc2.png" class="img-fluid figure-img"></p>
+<figcaption>ROC Curve</figcaption>
+</figure>
+</div>
+<ul>
+<li><strong>Word Clouds</strong>:
+<ul>
+<li>🔴 Fake News — Shows frequent terms in fake news articles</li>
+</ul>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="images/wordcloud_fake2.png" class="img-fluid figure-img"></p>
+<figcaption>Fake News</figcaption>
+</figure>
+</div>
+<ul>
+<li>🟢 Real News — Highlights words common in real news articles</li>
+</ul>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="images/wordcloud_real2.png" class="img-fluid figure-img"></p>
+<figcaption>Real News</figcaption>
+</figure>
+</div></li>
+</ul>
+<hr>
+<p>These visualizations help interpret not just <strong>how well</strong> the models performed, but also <strong>why</strong> — based on word patterns and prediction behavior.</p>
 
 
+</section>
+</section>
 </section>
 
 </main> <!-- /main -->

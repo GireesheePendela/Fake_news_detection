@@ -1,0 +1,47 @@
+---
+title: "Vectorization"
+format: html
+---
+
+## 🔠 Text Vectorization
+
+After cleaning and preprocessing the news articles, the next step was to convert the text data into a numerical format that machine learning models can understand.
+
+We used **TF-IDF Vectorization** (`Term Frequency–Inverse Document Frequency`) to represent each article as a vector of weighted word features.
+
+---
+
+### 📊 Why TF-IDF?
+
+TF-IDF helps:
+- Emphasize **important words** in a document that are less frequent across all documents
+- Reduce the impact of **common words** that appear in many articles
+- Create a **sparse, high-dimensional feature space** suitable for models like Logistic Regression and Naive Bayes
+
+---
+
+### 🛠️ How It Works:
+
+1. **TF (Term Frequency)**  
+   Measures how often a word appears in a single document.
+
+2. **IDF (Inverse Document Frequency)**  
+   Measures how rare a word is across all documents in the dataset.
+
+3. **TF × IDF = TF-IDF**  
+   The final score reflects both importance and uniqueness of each word per document.
+
+---
+
+### ⚙️ Implementation
+
+- We used `TfidfVectorizer` from `scikit-learn`
+- Parameters:
+  - `stop_words='english'` — ignores common English stopwords
+  - `max_df=0.7` — ignores words that appear in more than 70% of documents
+
+- The output is a **sparse matrix** used as input features `X` for model training.
+
+---
+
+This vectorized data formed the foundation for training our machine learning models.

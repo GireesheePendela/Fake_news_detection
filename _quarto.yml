@@ -10,3 +10,11 @@ website:
         text: Home
       - href: data.qmd
         text: Dataset
+      - href: preprocess.qmd
+        text: Data Preprocessing
+      - href: vectorization.qmd
+        text: Vectorization
+      - href: model.qmd
+        text: Model 
+  page-footer: 
+    left: "© 2025 Gireeshee Pendela"

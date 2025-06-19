@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>Dataset – Fake News Detection</title>
+<title>Data Preprocessing – Fake News Detection</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -92,11 +92,11 @@ ul.task-list li input[type="checkbox"] {
 <span class="menu-text">Home</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link active" href="./data.html" aria-current="page"> 
+    <a class="nav-link" href="./data.html"> 
 <span class="menu-text">Dataset</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="./preprocess.html"> 
+    <a class="nav-link active" href="./preprocess.html" aria-current="page"> 
 <span class="menu-text">Data Preprocessing</span></a>
   </li>  
   <li class="nav-item">
@@ -124,7 +124,7 @@ ul.task-list li input[type="checkbox"] {
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title">Dataset</h1>
+<h1 class="title">Data Preprocessing</h1>
 </div>
 
 
@@ -141,32 +141,37 @@ ul.task-list li input[type="checkbox"] {
 </header>
 
 
-<section id="dataset-description" class="level3">
-<h3 class="anchored" data-anchor-id="dataset-description">🗂️ Dataset Description</h3>
-<p>The dataset used in this project comes from <a href="https://www.kaggle.com/datasets/clmentbisaillon/fake-and-real-news-dataset">Kaggle: Fake and Real News Dataset</a>, and consists of two separate CSV files:</p>
-<ul>
-<li><strong><code>Fake.csv</code></strong> — Contains news articles that are labeled as <strong>fake</strong></li>
-<li><strong><code>True.csv</code></strong> — Contains news articles that are labeled as <strong>real</strong></li>
-</ul>
-<p>Each file includes the following columns: - <code>title</code>: The headline of the news article - <code>text</code>: The body/content of the article - <code>subject</code>: Topic category (e.g., politics, world news) - <code>date</code>: Publication date</p>
-<hr>
-</section>
-<section id="combining-the-dataset" class="level2">
-<h2 class="anchored" data-anchor-id="combining-the-dataset">🔗 Combining the Dataset</h2>
-<p>To train a supervised machine learning model, we need a single labeled dataset. So we:</p>
+<section id="text-cleaning-preprocessing" class="level2">
+<h2 class="anchored" data-anchor-id="text-cleaning-preprocessing">🧹 Text Cleaning &amp; Preprocessing</h2>
+<p>To prepare the news article content for machine learning, we performed a series of text preprocessing steps on the <code>text</code> column. This ensures that the model learns from clean, consistent, and meaningful text.</p>
+<section id="steps-applied" class="level3">
+<h3 class="anchored" data-anchor-id="steps-applied">🪛 Steps Applied:</h3>
 <ol type="1">
-<li>Assigned a new column called <code>label</code>:
-<ul>
-<li><code>0</code> for <strong>fake</strong> articles</li>
-<li><code>1</code> for <strong>real</strong> articles</li>
-</ul></li>
-<li>Used <code>pandas.concat()</code> to combine both datasets into one DataFrame</li>
-<li>Shuffled the rows to randomize the ordering</li>
-<li>Saved the result as <code>combined_news.csv</code></li>
+<li><p><strong>Lowercasing</strong><br>
+Converts all characters to lowercase to avoid treating “News” and “news” as different words.</p></li>
+<li><p><strong>Removing Punctuation &amp; Special Characters</strong><br>
+Strips out characters like <code>!</code>, <code>.</code>, <code>?</code>, and other non-alphabetic symbols to reduce noise.</p></li>
+<li><p><strong>Tokenization</strong><br>
+Splits sentences into individual words (tokens) using <code>nltk.word_tokenize</code>.</p></li>
+<li><p><strong>Stopword Removal</strong><br>
+Eliminates common, uninformative words such as “the”, “is”, “and”, using NLTK’s stopword list.</p></li>
+<li><p><strong>Lemmatization</strong><br>
+Reduces words to their base form (e.g., “running” → “run”) using <code>WordNetLemmatizer</code> to normalize similar words.</p></li>
+<li><p><strong>Whitespace Cleanup</strong><br>
+Joins cleaned tokens back into a single string with extra spaces removed.</p></li>
 </ol>
-<p>This ensures a balanced and properly labeled dataset for training and testing.</p>
+</section>
+<section id="output" class="level3">
+<h3 class="anchored" data-anchor-id="output">📄 Output</h3>
+<ul>
+<li>A new column called <code>clean_text</code> was created to store the processed text.</li>
+<li>The final dataset (<code>cleaned_news.csv</code>) was used for model training and evaluation.</li>
+</ul>
+<hr>
+<p>These preprocessing steps help remove noise, standardize input, and improve model performance by focusing on the most important words in each article.</p>
 
 
+</section>
 </section>
 
 </main> <!-- /main -->
